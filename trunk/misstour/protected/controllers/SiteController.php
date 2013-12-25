@@ -21,6 +21,20 @@ class SiteController extends Controller
 		);
 	}
 
+	public function beforeAction(){
+		if(Yii::app()->closeSite){
+			$this->redirect('site/launchsoon');
+		}
+		return true;
+	}
+
+	/*
+	 * Soon will launch
+	 **/
+	public function actionLaunchSoon(){
+		$this->render('launchsoon');
+	}
+
 	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
