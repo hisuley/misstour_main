@@ -22,8 +22,8 @@ class SiteController extends Controller
 	}
 
 	public function beforeAction(){
-		if(Yii::app()->closeSite){
-			$this->redirect('site/launchsoon');
+		if(Yii::app()->params['closeSite'] && $this->action->id != 'launchsoon'){
+			$this->redirect(array('site/launchsoon'));
 		}
 		return true;
 	}
@@ -32,7 +32,7 @@ class SiteController extends Controller
 	 * Soon will launch
 	 **/
 	public function actionLaunchSoon(){
-		$this->render('launchsoon');
+		$this->renderPartial('launchsoon');
 	}
 
 	/**
